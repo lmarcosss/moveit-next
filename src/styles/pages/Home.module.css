@@ -11,7 +11,15 @@
 .container section {
     flex: 1;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr; */
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 6.24rem;
     align-content: center;
+    padding: 20px 0;
+}
+
+@media (max-width: 730px) {
+    .container section {
+        gap: 3.24rem;
+    }
 }
