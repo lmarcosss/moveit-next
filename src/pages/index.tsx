@@ -1,4 +1,8 @@
+import { LoginForm } from '../components/LoginForm'
+import { UserProvider } from '../context/UserContext'
+
 import styles from '../styles/pages/Login.module.css'
+
 export default function Login() {
     return (
         <div className={styles.container}>
@@ -14,12 +18,9 @@ export default function Login() {
                     </div>
                 </div>
 
-                <div className={styles.form}>
-                    <input type="text" placeholder="Digite seu username" />
-                    <button type="button">
-                        <img src="/icons/arrow-right.svg" alt="botão entrar"/>
-                    </button>
-                </div>
+                <UserProvider>
+                    <LoginForm />
+                </UserProvider>
             </div>
         </div>
     )

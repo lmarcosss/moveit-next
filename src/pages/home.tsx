@@ -9,14 +9,17 @@ import { ChallengeBox } from '../components/ChallengeBox'
 import styles from '../styles/pages/Home.module.css'
 import { ChallengesProvider } from '../context/ChallengesContext'
 import { CountdownProvider } from '../context/CountdowContext'
+import { UserProvider } from '../context/UserContext'
+import { UserInformations } from '../types'
 
 interface HomeProps {
   level: number;
   currentExperience: number;
   challengeCompleted: number;
+  userInformations: UserInformations;
 }
 
-export default function Home({ level, currentExperience, challengeCompleted }: HomeProps) {
+export default function Home({ level, currentExperience, challengeCompleted, userInformations }: HomeProps) {  
   return (
     <ChallengesProvider
       level={level}
@@ -33,7 +36,9 @@ export default function Home({ level, currentExperience, challengeCompleted }: H
         <CountdownProvider>
           <section>
             <div>
-              <Profile />
+              <UserProvider userInformations={userInformations}>
+                <Profile />
+              </UserProvider>
               <CompletedChallenges />
               <Countdown />
             </div>
@@ -44,7 +49,6 @@ export default function Home({ level, currentExperience, challengeCompleted }: H
         </CountdownProvider>
       </div>
     </ChallengesProvider>
-
   )
 }
 
@@ -53,6 +57,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     level,
     currentExperience,
     challengeCompleted,
+    userInformations,
   } = context.req.cookies
 
   return {
@@ -60,6 +65,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       level: Number(level),
       currentExperience: Number(currentExperience),
       challengeCompleted: Number(challengeCompleted),
+      userInformations: JSON.parse(userInformations),
     },
   }
 }
