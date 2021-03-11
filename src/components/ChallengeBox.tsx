@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { ChallengesContext, Challenge } from '../context/ChallengesContext';
+import { CountdownContext } from '../context/CountdowContext';
 import styles from '../styles/components/ChallengeBox.module.css'
 
 interface ContentProps {
@@ -52,13 +53,25 @@ function Content({ activeChallenge, resetChallenge, completeChallenge }: Content
 }
 export function ChallengeBox() {
     const { activeChallenge, resetChallenge, completeChallenge } = useContext(ChallengesContext)
+    const { resetCountdown } = useContext(CountdownContext)
+
+
+    function handleChallengeSucceeded() {
+        completeChallenge()
+        resetCountdown()
+    }
+
+    function handleChallengeFailed() {
+        resetChallenge()
+        resetCountdown()
+    }
 
     return (
         <div className={styles.challengeBoxContainer}>
             <Content
                 activeChallenge={activeChallenge}
-                resetChallenge={resetChallenge}
-                completeChallenge={completeChallenge}
+                resetChallenge={handleChallengeFailed}
+                completeChallenge={handleChallengeSucceeded}
             />
         </div>
     )
