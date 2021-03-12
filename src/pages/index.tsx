@@ -1,12 +1,14 @@
 import { LoginForm } from '../components/LoginForm'
 import { UserProvider } from '../context/UserContext'
+import { useWindowSize } from '../hooks/use-window'
 
 import styles from '../styles/pages/Login.module.css'
 
 export default function Login() {
+    const windowSize = useWindowSize()
     return (
         <div className={styles.container}>
-            <img src="/icons/background-login.svg" alt="background"/>
+            {windowSize.width > 1530 && <img src="/icons/background-login.svg" alt="background"/>}
             <div className={styles.login}>
                 <img src="/logo-full.svg" alt="logo"/>
                 
