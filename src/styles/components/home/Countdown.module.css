@@ -65,12 +65,25 @@
     background: var(--blue-dark);
 }
 
-.countdownButtonActivated {
+.containerButtonActivated {
+    display: flex;
+}
+
+.containerButtonActivated div {
+    width: 80px;
+    height: 100%;
+}
+
+.sizeButton {
+    width: 50%;
+}
+
+.abortButton {
     background: var(--white);
     color: var(--text);
 }
 
-.countdownButtonActivated:not(:disabled):hover {
+.abortButton:not(:disabled):hover {
     background: var(--red);
     color: var(--white);
 }

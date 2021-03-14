@@ -12,6 +12,7 @@ import { CountdownProvider } from '../context/CountdowContext'
 import { UserProvider } from '../context/UserContext'
 import { UserInformations } from '../types'
 import styles from '../styles/pages/Home.module.css'
+import { SettingsModal } from '../components/home/SettingsModal'
 interface HomeProps {
   level: number;
   currentExperience: number;
@@ -34,7 +35,7 @@ export default function Home({ level, currentExperience, challengeCompleted, use
         <AppBar pageName="home" />
         
         <ExperienceBar />
-
+      
         <CountdownProvider>
           <section>
             <div>

@@ -1,21 +1,18 @@
 import { useContext } from 'react'
 import { ChallengesContext } from '../../context/ChallengesContext'
+import { Modal } from '../common/Modal'
 import styles from '../../styles/components/home/LevelUpModal.module.css'
 
 export function LevelUpModal() {
     const { level, closeLevelUpModal } = useContext(ChallengesContext)
     return (
-        <div className={styles.overlay}>
-            <div className={styles.container}>
+        <Modal closeModal={closeLevelUpModal}>
+            <div className={styles.content}>
                 <header>{level}</header>
 
                 <strong>Parabéns</strong>
                 <p>Você alcançou um novo level.</p>
-
-                <button type="button" onClick={closeLevelUpModal}>
-                    <img src="/icons/close.svg" alt="fechar modal"/>
-                </button>
             </div>
-        </div>
+        </Modal>
     )
 }

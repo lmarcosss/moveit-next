@@ -7,19 +7,30 @@ interface IButton {
     hasFinished: boolean;
     startCountdown: () => void;
     resetCountdown: () => void;
+    pauseCountdown: () => void;
 }
 
-function Button({ isActive, hasFinished, startCountdown, resetCountdown }: IButton) {
+function Button({ isActive, hasFinished, startCountdown, resetCountdown, pauseCountdown }: IButton) {
 
     if (isActive) {
         return (
-            <button
-                onClick={resetCountdown}
-                className={`${styles.countdownButton} ${styles.countdownButtonActivated}`}
-                type="button"
-            >
-                Abortar ciclo
-            </button>
+            <div className={styles.containerButtonActivated}>
+                <button
+                    onClick={pauseCountdown}
+                    className={`${styles.countdownButton} ${styles.buttonSize} ${styles.pauseButton}`}
+                    type="button"
+                >
+                    Pausar ciclo
+                </button>
+                <div></div>
+                <button
+                    onClick={resetCountdown}
+                    className={`${styles.countdownButton} ${styles.buttonSize} ${styles.abortButton}`}
+                    type="button"
+                >
+                    Abortar ciclo
+                </button>
+            </div>
         )
     }
 
@@ -28,7 +39,6 @@ function Button({ isActive, hasFinished, startCountdown, resetCountdown }: IButt
             <button
                 className={styles.countdownButton}
                 disabled
-
             >
                 Ciclo encerrado {<img src="icons/complete.svg" alt=""/>}
             </button>
@@ -41,7 +51,7 @@ function Button({ isActive, hasFinished, startCountdown, resetCountdown }: IButt
             className={styles.countdownButton}
             type="button"
         >
-            Iniciar um ciclo 
+            Iniciar ciclo 
         </button>
     )
 }
@@ -54,6 +64,7 @@ export function Countdown() {
         isActive,
         startCountdown,
         resetCountdown,
+        pauseCountdown,
     } = useContext(CountdownContext)
 
     function getStringTime(number: number) {
@@ -80,6 +91,7 @@ export function Countdown() {
                 isActive={isActive}
                 startCountdown={startCountdown}
                 resetCountdown={resetCountdown}
+                pauseCountdown={pauseCountdown}
                 hasFinished={hasFinished}
             />
         </div>
