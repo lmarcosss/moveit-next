@@ -30,6 +30,11 @@
     border: none;
 }
 
+.form button.hasValue {
+    background: var(--green);
+    color: var(--white);
+}
+
 .form button img {
     width: 24px;
     height: 24px;

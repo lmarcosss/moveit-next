@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import { ChallengesContext, Challenge } from '../context/ChallengesContext';
-import { CountdownContext } from '../context/CountdowContext';
-import styles from '../styles/components/ChallengeBox.module.css'
+import { ChallengesContext, Challenge } from '../../context/ChallengesContext';
+import { CountdownContext } from '../../context/CountdowContext';
+import styles from '../../styles/components/home/ChallengeBox.module.css'
 
 interface ContentProps {
     activeChallenge: Challenge;

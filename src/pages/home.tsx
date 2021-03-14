@@ -1,17 +1,17 @@
 import Head from 'next/head'
 import { GetServerSideProps } from 'next'
-import { CompletedChallenges } from '../components/CompletedChallenges'
-import { ExperienceBar } from '../components/ExperienceBar'
-import { Profile } from '../components/Profile'
-import { Countdown } from '../components/Countdown'
-import { ChallengeBox } from '../components/ChallengeBox'
+import { CompletedChallenges } from '../components/home/CompletedChallenges'
+import { ExperienceBar } from '../components/home/ExperienceBar'
+import { Profile } from '../components/home/Profile'
+import { Countdown } from '../components/home/Countdown'
+import { ChallengeBox } from '../components/home/ChallengeBox'
+import { AppBar } from '../components/common/AppBar'
 
-import styles from '../styles/pages/Home.module.css'
 import { ChallengesProvider } from '../context/ChallengesContext'
 import { CountdownProvider } from '../context/CountdowContext'
 import { UserProvider } from '../context/UserContext'
 import { UserInformations } from '../types'
-
+import styles from '../styles/pages/Home.module.css'
 interface HomeProps {
   level: number;
   currentExperience: number;
@@ -30,6 +30,8 @@ export default function Home({ level, currentExperience, challengeCompleted, use
         <Head>
           <title>Inicio | Moveit</title>
         </Head>
+
+        <AppBar pageName="home" />
         
         <ExperienceBar />
 

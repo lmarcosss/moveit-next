@@ -1,9 +1,9 @@
 import { useContext, useState } from 'react'
 import { useRouter } from 'next/router'
-import { UserContext } from '../context/UserContext'
-import { getUserInformations } from '../services'
-import styles from '../styles/components/LoginForm.module.css'
-import { Loading } from './Loading'
+import { UserContext } from '../../context/UserContext'
+import { GithubService } from '../../services/github.service'
+import styles from '../../styles/components/login/LoginForm.module.css'
+import { Loading } from '../common/Loading'
 
 export function LoginForm() {
     const [user, setUser] = useState('')
@@ -16,7 +16,7 @@ export function LoginForm() {
         setLoading(true)
 
         try {
-            const { data } = await getUserInformations(user)
+            const { data } = await GithubService.getUserInformations(user)
 
             handleUserInformations(data)
             router.push('/home')
@@ -34,7 +34,7 @@ export function LoginForm() {
     return (
         <form className={styles.form} onSubmit={fetchUser}>
             <input type="text" placeholder="Digite seu username" value={user} onChange={onChange} />
-            <button type="submit" disabled={!user}>
+            <button type="submit" disabled={!user} className={!!user && styles.hasValue}>
                 {loading ? <Loading /> : <img src="/icons/arrow-right.svg" alt="botão entrar"/>}
             </button>
         </form>
