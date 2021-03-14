@@ -6,6 +6,10 @@
     top: 0;
     bottom: 0;
     left: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .container > img:first-child {
@@ -17,7 +21,7 @@
     top: 32px;
 }
 
-.links {
+.pageLinks {
     width: 100%;
     height: 100%;
     flex: 1;
@@ -28,16 +32,40 @@
 
 }
 
-.links button {
+.container button {
     width: 100%;
     background: none;
     border: none;
     display: flex;
     align-items: center;
-    border-left: 4px solid transparent;
 }
 
-.links button img {
+.pageLinks button:disabled {
+    cursor: not-allowed;
+}
+
+.pageLinks button img {
     width: 72px;
     height: 62px;
+    color: var(--text);
+}
+
+.modalLinks {
+    padding-bottom: 20px;
+}
+
+.modalLinks button {
+    justify-content: center;
+    padding: 10px 0 10px 0;
+}
+
+.modalLinks > button > img:first-child {
+    width: 35px;
+    height: 35px;
+    padding-left: 5px;
+    font-size: 0;
+}
+
+#settingsIcon{
+    padding-right: 5px;
 }

@@ -18,11 +18,15 @@ export function AppBar({ pageName }) {
         router.replace(`/${RouterPages[pageName]}`)
     }
 
+    function onLogout() {
+        router.replace('/')
+    }
+
     return (
         <div className={styles.container}>
             <img src="icons/logo.svg" alt="moveit logo"/>
 
-            <div className={styles.links}>
+            <div className={styles.pageLinks}>
                 <button onClick={onClick} disabled={isHomePage}>
                     <img
                         src={`icons/home${isHomePage ? '-active' : '' }.svg`}
@@ -35,6 +39,23 @@ export function AppBar({ pageName }) {
                         alt="award link"
                     />
                 </button>
+            </div>
+
+            <div className={styles.modalLinks}>
+                <button>
+                    <img
+                        id={styles.settingsIcon}
+                        src={`icons/settings.svg`}
+                        alt="award link"
+                    />
+                </button>
+                <button onClick={onLogout} disabled={false}>
+                    <img
+                        src={`icons/exit.svg`}
+                        alt="award link"
+                    />
+                </button>
+                
             </div>
         </div>
     )
