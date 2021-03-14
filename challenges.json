@@ -58,5 +58,30 @@
       "type": "body",
       "description": "Em pé, gire a cintura o máximo que puder para a esquerda, segure por cinco segundos. Repita para a direita.",
       "amount": 90
+    },
+    {
+      "type": "body",
+      "description": "Feche firmemente a mão contra o pulso e abra, esticando os dedos, por três vezes.",
+      "amount": 60
+    },
+    {
+      "type": "body",
+      "description": "Sentado na cadeira, encoste o queixo no peito e vá enrolando seu corpo até onde conseguir; relaxe os braços e o pescoço por vinte segundos. Na seqüencia, retorne para a posição inicial, lentamente, mantendo o queixo apoiado no peito.",
+      "amount": 90
+    },
+    {
+      "type": "body",
+      "description": "Em pé, junte as pernas e eleve os braços até as palmas das mãos ficarem paralelas sobre a cabeça. Mantendo os braços esticados, vá descendo o tronco até as mãos tocarem o chão, mas sem flexionar os joelhos. Mantenha-se assim por dez segundos, e volte lentamente até a posição inicial.",
+      "amount": 90
+    },
+    {
+      "type": "body",
+      "description": "Sente-se numa cadeira mantendo tronco e ombros eretos. Faça rotações lentas, primeiro virando a cabeça para o lado direito; volte para a posição inicial e faça o movimento para o lado esquerdo. Repita dez vezes",
+      "amount": 120
+    },
+    {
+      "type": "body",
+      "description": "Para trabalhar as laterais do pescoço, incline-o lateralmente e ao mesmo tempo faça força com o ombro oposto para baixo por vinte segundos. Repita dez vezes.",
+      "amount": 110
     }
   ]
