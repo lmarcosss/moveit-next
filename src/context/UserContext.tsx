@@ -1,34 +1,34 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 import Cookies from 'js-cookie'
-import { UserInformations } from '../types'
+import { UserInformation } from '../types'
 
 interface UserContextData {
-    handleUserInformations: (userInformations: UserInformations) => void;
-    userInformations: UserInformations
+    handleUserInformations: (userInformations: UserInformation) => void;
+    userInformation: UserInformation
 }
 
 interface UserProviderProps {
     children: ReactNode;
-    userInformations?: UserInformations;
+    userInformation?: UserInformation;
 }
 
 
 export const UserContext = createContext({} as UserContextData)
 
-export function UserProvider({ children, userInformations: newUserInformation }: UserProviderProps) {
-    const [userInformations, setUserInformations] = useState<UserInformations>(newUserInformation ?? {} as UserInformations)
-    const cookieName = 'userInformations'
+export function UserProvider({ children, userInformation: newUserInformation }: UserProviderProps) {
+    const [userInformation, setUserInformation] = useState<UserInformation>(newUserInformation ?? null as UserInformation)
+    const cookieName = 'userInformation'
 
     useEffect(() => {
-        Cookies.set(cookieName, JSON.stringify(userInformations))
-    }, [userInformations])
+        Cookies.set(cookieName, JSON.stringify(userInformation))
+    }, [userInformation])
 
-    function handleUserInformations(newUserInformations: UserInformations) {
-        setUserInformations(newUserInformations)
+    function handleUserInformations(newUserInformation: UserInformation) {
+        setUserInformation(newUserInformation)
     }
 
     return (
-        <UserContext.Provider value={{ handleUserInformations, userInformations }}>
+        <UserContext.Provider value={{ handleUserInformations, userInformation }}>
             {children}
         </UserContext.Provider>
     )

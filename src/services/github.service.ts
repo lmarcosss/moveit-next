@@ -1,11 +1,11 @@
 import axios from 'axios'
-import { UserInformations } from '../types'
+import { UserInformationAPI } from '../types'
 
-interface GetUserInformationsData {
-    data: UserInformations
+interface GetUserInformationData {
+    data: UserInformationAPI
 }
 
-const getUserInformations = (user: string): Promise<GetUserInformationsData> => {
+const getUserInformations = (user: string): Promise<GetUserInformationData> => {
     const endPoint = `https://api.github.com/users/${user}`
 
     return axios.get(endPoint)

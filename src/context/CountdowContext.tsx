@@ -17,7 +17,7 @@ interface CountdownProviderProps {
 
 let countdownTimeout: NodeJS.Timeout
 
-const TIME = 0.1
+const TIME = 25
 
 export const CountdownContext = createContext({} as CountdownContextData)
 

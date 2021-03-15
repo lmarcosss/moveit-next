@@ -18,8 +18,8 @@ export function LoginForm() {
         try {
             const { data } = await GithubService.getUserInformations(user)
 
+            handleUserInformations({ name: data.name, avatarURL: data.avatar_url})
             router.push('/home')
-            handleUserInformations(data)
         } catch (error) {
             alert(error)
         } finally {

@@ -54,13 +54,13 @@ export function AppBar({ pageName }) {
                 </div>
 
                 <div className={styles.modalLinks}>
-                    {/* <button onClick={openSettingsModal}>
+                    <button onClick={openSettingsModal}>
                         <img
                             id={styles.settingsIcon}
                             src={`icons/settings.svg`}
                             alt="award link"
                         />
-                    </button> */}
+                    </button>
                     <button onClick={onLogout} disabled={false}>
                         <img
                             src={`icons/exit.svg`}

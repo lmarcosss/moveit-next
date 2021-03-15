@@ -10,17 +10,16 @@ import { AppBar } from '../components/common/AppBar'
 import { ChallengesProvider } from '../context/ChallengesContext'
 import { CountdownProvider } from '../context/CountdowContext'
 import { UserProvider } from '../context/UserContext'
-import { UserInformations } from '../types'
+import { UserInformation } from '../types'
 import styles from '../styles/pages/Home.module.css'
-import { SettingsModal } from '../components/home/SettingsModal'
 interface HomeProps {
   level: number;
   currentExperience: number;
   challengeCompleted: number;
-  userInformations: UserInformations;
+  userInformation: UserInformation;
 }
 
-export default function Home({ level, currentExperience, challengeCompleted, userInformations }: HomeProps) {  
+export default function Home({ level, currentExperience, challengeCompleted, userInformation }: HomeProps) {  
   return (
     <ChallengesProvider
       level={level}
@@ -39,7 +38,7 @@ export default function Home({ level, currentExperience, challengeCompleted, use
         <CountdownProvider>
           <section>
             <div>
-              <UserProvider userInformations={userInformations}>
+              <UserProvider userInformation={userInformation}>
                 <Profile />
               </UserProvider>
               <CompletedChallenges />
@@ -60,7 +59,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     level,
     currentExperience,
     challengeCompleted,
-    userInformations,
+    userInformation,
   } = context.req.cookies
 
   return {
@@ -68,7 +67,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       level: Number(level),
       currentExperience: Number(currentExperience),
       challengeCompleted: Number(challengeCompleted),
-      userInformations: JSON.parse(userInformations),
+      userInformation: JSON.parse(userInformation),
     },
   }
 }

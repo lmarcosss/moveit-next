@@ -1,8 +1,8 @@
 import styles from '../../styles/components/common/Modal.module.css'
-export function Modal({ closeModal, children }) {
+export function Modal({ closeModal, children, containerStyles }) {
     return (
         <div className={styles.overlay}>
-            <div className={styles.container}>
+            <div className={`${styles.container} ${containerStyles}`}>
                 {children}
 
                 <button type="button" onClick={closeModal}>
