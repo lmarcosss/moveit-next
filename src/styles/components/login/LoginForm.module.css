@@ -30,6 +30,10 @@
     border: none;
 }
 
+.form button:disabled {
+    cursor: not-allowed;
+}
+
 .form button.hasValue {
     background: var(--green);
     color: var(--white);
