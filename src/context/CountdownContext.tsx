@@ -59,7 +59,7 @@ export function CountdownProvider({ children, savedTime }: CountdownProviderProp
         setIsActive(false)
         setHasFinished(false)
         clearTimeout(countdownTimeout)
-        setTime(TIME * 60)
+        setTime(DEFAULT_TIME * 60)
     }
 
     function pauseCountdown() {
