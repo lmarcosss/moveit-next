@@ -2,8 +2,8 @@ import { useContext, useState } from 'react'
 import { useRouter } from 'next/router'
 import { UserContext } from '../../context/UserContext'
 import { GithubService } from '../../services/github.service'
-import styles from '../../styles/components/login/LoginForm.module.css'
 import { Loading } from '../common/Loading'
+import styles from '../../styles/components/login/LoginForm.module.css'
 
 export function LoginForm() {
     const [user, setUser] = useState('')
@@ -18,12 +18,12 @@ export function LoginForm() {
         try {
             const { data } = await GithubService.getUserInformations(user)
 
-            handleUserInformations(data)
             router.push('/home')
+            handleUserInformations(data)
         } catch (error) {
             alert(error)
         } finally {
-            setLoading(false)
+            setTimeout(() => setLoading(false), 2000)
         }
     }
 
