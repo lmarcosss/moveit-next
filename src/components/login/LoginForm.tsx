@@ -22,9 +22,10 @@ export function LoginForm() {
             router.push('/home')
         } catch (error) {
             alert(error)
+        } finally {
+            setInterval(() => setLoading(false), 2000)
         }
         
-        setTimeout(() => setLoading(false), 2000)
     }
 
     function onChange(e: React.ChangeEvent<HTMLInputElement>) {
