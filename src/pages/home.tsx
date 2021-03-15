@@ -17,9 +17,10 @@ interface HomeProps {
   currentExperience: number;
   challengeCompleted: number;
   userInformation: UserInformation;
+  savedTime: number;
 }
 
-export default function Home({ level, currentExperience, challengeCompleted, userInformation }: HomeProps) {  
+export default function Home({ level, currentExperience, challengeCompleted, userInformation, savedTime }: HomeProps) {  
   return (
     <ChallengesProvider
       level={level}
@@ -34,7 +35,7 @@ export default function Home({ level, currentExperience, challengeCompleted, use
         <ExperienceBar />
         
       
-        <CountdownProvider>
+        <CountdownProvider savedTime={savedTime}>
           <AppBar pageName="home" />
           
           <section>
@@ -61,6 +62,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     currentExperience,
     challengeCompleted,
     userInformation,
+    savedTime,
   } = context.req.cookies
 
   return {
@@ -69,6 +71,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       currentExperience: Number(currentExperience),
       challengeCompleted: Number(challengeCompleted),
       userInformation: JSON.parse(userInformation),
+      savedTime: Number(savedTime),
     },
   }
 }
