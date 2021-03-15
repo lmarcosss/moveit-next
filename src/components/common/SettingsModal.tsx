@@ -1,5 +1,8 @@
-import { useState } from "react";
-import { Modal } from "../common/Modal"
+import { useContext, useState } from "react";
+import Cookies from "js-cookie";
+import { Modal } from "./Modal"
+import { CountdownContext } from "../../context/CountdownContext";
+import { CookiesEnum } from "../../enums";
 
 import styles from '../../styles/components/home/SettingsModal.module.css'
 
@@ -10,19 +13,22 @@ interface Props {
 }
 
 export function SettingsModal({ closeModal }: Props) {
-    const [time, setTime] = useState(DEFAULT_TIME)
+    const savedTime = Number(Cookies.get(CookiesEnum.countdownTime))
+    const { setCountdownTime, countdownTime } = useContext(CountdownContext)
+    const [time, setTime] = useState(savedTime ?? countdownTime / 60 ?? DEFAULT_TIME)
     const [isDisabledButton, setIsDisabledButton] = useState(true)
 
     function onSubmit(e: React.ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
-
+        setCountdownTime(time * 60)
+        Cookies.set(CookiesEnum.countdownTime, String(time))
         closeModal()
     }
 
     function onChange(e: React.ChangeEvent<HTMLInputElement>) {
         const value = Number(e.target.value)
         setTime(value)
-        setIsDisabledButton(value === DEFAULT_TIME)
+        setIsDisabledButton(value === countdownTime)
     }
 
     return (

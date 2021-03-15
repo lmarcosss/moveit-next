@@ -8,7 +8,7 @@ import { ChallengeBox } from '../components/home/ChallengeBox'
 import { AppBar } from '../components/common/AppBar'
 
 import { ChallengesProvider } from '../context/ChallengesContext'
-import { CountdownProvider } from '../context/CountdowContext'
+import { CountdownProvider } from '../context/CountdownContext'
 import { UserProvider } from '../context/UserContext'
 import { UserInformation } from '../types'
 import styles from '../styles/pages/Home.module.css'
@@ -31,11 +31,12 @@ export default function Home({ level, currentExperience, challengeCompleted, use
           <title>Inicio | Moveit</title>
         </Head>
 
-        <AppBar pageName="home" />
-        
         <ExperienceBar />
+        
       
         <CountdownProvider>
+          <AppBar pageName="home" />
+          
           <section>
             <div>
               <UserProvider userInformation={userInformation}>

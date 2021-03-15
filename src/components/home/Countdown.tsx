@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { CountdownContext } from '../../context/CountdowContext'
+import { CountdownContext } from '../../context/CountdownContext'
 import styles from '../../styles/components/home/Countdown.module.css'
 
 interface ButtonProps {

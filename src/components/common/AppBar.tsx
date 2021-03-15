@@ -1,9 +1,10 @@
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import { CookiesEnum } from '../../enums'
 
 import styles from '../../styles/components/common/AppBar.module.css'
-import { SettingsModal } from '../home/SettingsModal'
+import { SettingsModal } from './SettingsModal'
 
 enum RouterPages {
     home = 'ranking',
@@ -28,7 +29,7 @@ export function AppBar({ pageName }: Props) {
 
     function onLogout() {
         router.replace('/')
-        Cookies.remove('userInformation')
+        Cookies.remove(CookiesEnum.userInformation)
     }
 
     function closeSettingsModal() {

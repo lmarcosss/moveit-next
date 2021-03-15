@@ -3,6 +3,7 @@ import { LevelUpModal } from '../components/home/LevelUpModal'
 import challenges from '../../challenges.json'
 
 import Cookies from 'js-cookie'
+import { CookiesEnum } from '../enums'
 
 enum ChallengeType {
     BODY = 'body',
@@ -54,9 +55,9 @@ export function ChallengesProvider({
     }, [])
 
     useEffect(() => {
-        Cookies.set('level', String(level))
-        Cookies.set('currentExperience', String(currentExperience))
-        Cookies.set('challengesCompleted', String(challengesCompleted))
+        Cookies.set(CookiesEnum.level, String(level))
+        Cookies.set(CookiesEnum.currentExperience, String(currentExperience))
+        Cookies.set(CookiesEnum.challengesCompleted, String(challengesCompleted))
 
     }, [level, currentExperience, challengesCompleted])
 

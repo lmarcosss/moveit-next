@@ -23,7 +23,7 @@ export function LoginForm() {
         } catch (error) {
             alert(error)
         } finally {
-            setInterval(() => setLoading(false), 2000)
+            setTimeout(() => setLoading(false))
         }
         
     }

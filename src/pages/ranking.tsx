@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { AppBar } from "../components/common/AppBar";
 import { Table } from "../components/ranking/Table";
+import { CountdownProvider } from "../context/CountdownContext";
 
 import styles from '../styles/pages/Ranking.module.css'
 
@@ -10,7 +11,10 @@ export default function Ranking() {
             <Head>
                 <title>Ranking | Moveit</title>
             </Head>
-            <AppBar pageName="ranking" />
+
+            <CountdownProvider>
+                <AppBar pageName="ranking" />
+            </CountdownProvider>
 
             <p>Ranking (Em breve)</p>
 

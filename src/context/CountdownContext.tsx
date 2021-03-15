@@ -1,5 +1,7 @@
+import Cookies from 'js-cookie'
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 import { ChallengesContext } from './ChallengesContext'
+import { CookiesEnum } from '../enums/index'
 
 interface CountdownContextData {
     minutes: number;
@@ -9,6 +11,8 @@ interface CountdownContextData {
     startCountdown: () => void;
     resetCountdown: () => void;
     pauseCountdown: () => void;
+    setCountdownTime: (newTime: any) => void;
+    countdownTime: number;
 }
 
 interface CountdownProviderProps {
@@ -22,9 +26,10 @@ const TIME = 25
 export const CountdownContext = createContext({} as CountdownContextData)
 
 export function CountdownProvider({ children }: CountdownProviderProps) {
-    const { startNewChallenge } = useContext(ChallengesContext)
+    const savedTime = Number(Cookies.get(CookiesEnum.countdownTime))
 
-    const [time, setTime] = useState(TIME * 60)
+    const { startNewChallenge } = useContext(ChallengesContext)
+    const [time, setTime] = useState((savedTime ?? TIME) * 60)
     const [isActive, setIsActive] = useState(false)
     const [hasFinished, setHasFinished] = useState(false)
     const minutes = Math.floor(time / 60)
@@ -61,6 +66,10 @@ export function CountdownProvider({ children }: CountdownProviderProps) {
 
     }
 
+    function setCountdownTime(newTime: number) {
+        setTime(newTime)
+    }
+
     return (
         <CountdownContext.Provider value={{
             minutes,
@@ -70,6 +79,8 @@ export function CountdownProvider({ children }: CountdownProviderProps) {
             startCountdown,
             resetCountdown,
             pauseCountdown,
+            setCountdownTime,
+            countdownTime: time,
         }}>
             {children}
         </CountdownContext.Provider>
