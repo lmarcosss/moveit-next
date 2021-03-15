@@ -1,3 +1,4 @@
+import Cookies from 'js-cookie'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 
@@ -27,6 +28,7 @@ export function AppBar({ pageName }: Props) {
 
     function onLogout() {
         router.replace('/')
+        Cookies.remove('userInformation')
     }
 
     function closeSettingsModal() {
