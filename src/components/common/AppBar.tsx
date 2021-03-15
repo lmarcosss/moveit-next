@@ -10,7 +10,11 @@ enum RouterPages {
 
 }
 
-export function AppBar({ pageName }) {
+interface Props {
+    pageName: string;
+}
+
+export function AppBar({ pageName }: Props) {
     const router = useRouter()
     const [settingsModal, setSettingsModal] = useState(false)
 

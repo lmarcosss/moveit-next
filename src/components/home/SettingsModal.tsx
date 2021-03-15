@@ -5,7 +5,11 @@ import styles from '../../styles/components/home/SettingsModal.module.css'
 
 const DEFAULT_TIME = 25
 
-export function SettingsModal({ closeModal }) {
+interface Props {
+    closeModal: () => void;
+}
+
+export function SettingsModal({ closeModal }: Props) {
     const [time, setTime] = useState(DEFAULT_TIME)
     const [isDisabledButton, setIsDisabledButton] = useState(true)
 

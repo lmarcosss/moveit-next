@@ -1,12 +1,14 @@
-import styles from '../../styles/components/common/Modal.module.css'
 import { ReactNode } from 'react'
+
+import styles from '../../styles/components/common/Modal.module.css'
 
 interface Props {
     closeModal: () => void;
     children: ReactNode;
     containerStyles?: string;
 }
-export function Modal({ closeModal, children, containerStyles }) {
+
+export function Modal({ closeModal, children, containerStyles }: Props) {
     return (
         <div className={styles.overlay}>
             <div className={`${styles.container} ${containerStyles}`}>

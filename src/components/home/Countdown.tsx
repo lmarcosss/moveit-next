@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { CountdownContext } from '../../context/CountdowContext'
 import styles from '../../styles/components/home/Countdown.module.css'
 
-interface IButton {
+interface ButtonProps {
     isActive: boolean;
     hasFinished: boolean;
     startCountdown: () => void;
@@ -10,7 +10,7 @@ interface IButton {
     pauseCountdown: () => void;
 }
 
-function Button({ isActive, hasFinished, startCountdown, resetCountdown, pauseCountdown }: IButton) {
+function Button({ isActive, hasFinished, startCountdown, resetCountdown, pauseCountdown }: ButtonProps) {
 
     if (isActive) {
         return (
