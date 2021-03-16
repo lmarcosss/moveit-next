@@ -23,9 +23,8 @@ export function LoginForm() {
         } catch (error) {
             alert(error)
         } finally {
-            setTimeout(() => setLoading(false))
+            setLoading(false)
         }
-        
     }
 
     function onChange(e: React.ChangeEvent<HTMLInputElement>) {

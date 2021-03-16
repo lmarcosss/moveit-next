@@ -12,15 +12,17 @@ import { CountdownProvider } from '../context/CountdownContext'
 import { UserProvider } from '../context/UserContext'
 import { UserInformation } from '../types'
 import styles from '../styles/pages/Home.module.css'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 interface HomeProps {
   level: number;
   currentExperience: number;
   challengeCompleted: number;
   userInformation: UserInformation;
-  savedTime: number;
+  countdownTime: number;
 }
 
-export default function Home({ level, currentExperience, challengeCompleted, userInformation, savedTime }: HomeProps) {  
+export default function Home({ level, currentExperience, challengeCompleted, userInformation, countdownTime }: HomeProps) {  
   return (
     <ChallengesProvider
       level={level}
@@ -35,7 +37,7 @@ export default function Home({ level, currentExperience, challengeCompleted, use
         <ExperienceBar />
         
       
-        <CountdownProvider savedTime={savedTime}>
+        <CountdownProvider countdownTime={countdownTime}>
           <AppBar pageName="home" />
           
           <section>
@@ -62,7 +64,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     currentExperience,
     challengeCompleted,
     userInformation,
-    savedTime,
+    countdownTime,
   } = context.req.cookies
 
   return {
@@ -71,7 +73,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       currentExperience: Number(currentExperience),
       challengeCompleted: Number(challengeCompleted),
       userInformation: JSON.parse(userInformation),
-      savedTime: Number(savedTime),
+      countdownTime: Number(countdownTime),
     },
   }
 }

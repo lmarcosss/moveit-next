@@ -17,7 +17,7 @@ interface CountdownContextData {
 
 interface CountdownProviderProps {
     children: ReactNode;
-    savedTime: number;
+    countdownTime: number;
 }
 
 let countdownTimeout: NodeJS.Timeout
@@ -26,9 +26,9 @@ const DEFAULT_TIME = 25
 
 export const CountdownContext = createContext({} as CountdownContextData)
 
-export function CountdownProvider({ children, savedTime }: CountdownProviderProps) {
+export function CountdownProvider({ children, countdownTime }: CountdownProviderProps) {
     const { startNewChallenge } = useContext(ChallengesContext)
-    const [time, setTime] = useState((savedTime ?? DEFAULT_TIME) * 60)
+    const [time, setTime] = useState((countdownTime ?? DEFAULT_TIME) * 60)
     const [isActive, setIsActive] = useState(false)
     const [hasFinished, setHasFinished] = useState(false)
     const minutes = Math.floor(time / 60)
@@ -48,7 +48,7 @@ export function CountdownProvider({ children, savedTime }: CountdownProviderProp
     }, [isActive, time])
 
     useEffect(() => {
-        Cookies.set(CookiesEnum.countdownTime, String(time))
+        Cookies.set(CookiesEnum.countdownTime, String(time / 60))
     }, [time])
 
     function startCountdown() {

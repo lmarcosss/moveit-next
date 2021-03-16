@@ -7,20 +7,21 @@ import { CountdownProvider } from "../context/CountdownContext";
 import styles from '../styles/pages/Ranking.module.css'
 
 interface Props {
-    savedTime: number;
+    countdownTime: number;
 }
-export default function Ranking({ savedTime }: Props) {
+
+export default function Ranking({ countdownTime }: Props) {
     return (
         <div className={styles.container}>
             <Head>
                 <title>Ranking | Moveit</title>
             </Head>
 
-            <CountdownProvider savedTime={savedTime}>
+            <CountdownProvider countdownTime={countdownTime}>
                 <AppBar pageName="ranking" />
             </CountdownProvider>
 
-            <p>Ranking (Em breve)</p>
+            <p>Ranking</p>
 
             <Table />
         </div>
@@ -29,12 +30,12 @@ export default function Ranking({ savedTime }: Props) {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const {
-      savedTime,
+      countdownTime,
     } = context.req.cookies
   
     return {
       props: {
-        savedTime: Number(savedTime),
+        countdownTime: Number(countdownTime),
       },
     }
   }

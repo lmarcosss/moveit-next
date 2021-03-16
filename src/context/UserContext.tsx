@@ -17,7 +17,7 @@ interface UserProviderProps {
 export const UserContext = createContext({} as UserContextData)
 
 export function UserProvider({ children, userInformation: newUserInformation }: UserProviderProps) {
-    const [userInformation, setUserInformation] = useState<UserInformation>(newUserInformation ?? null as UserInformation)
+    const [userInformation, setUserInformation] = useState<UserInformation>(null ?? newUserInformation)
 
     useEffect(() => {
         Cookies.set(CookiesEnum.userInformation, JSON.stringify(userInformation))

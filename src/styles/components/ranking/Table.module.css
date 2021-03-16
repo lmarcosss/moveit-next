@@ -1,0 +1,110 @@
+.head {
+    padding-top: 40px;
+    padding-bottom: 14px;
+}
+
+.head > span {
+    color: var(--text);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.head > span:first-child {
+    padding-right: 35px;
+}
+
+.head > span:nth-child(2) {
+    padding-right: 467px;
+}
+
+.head > span:nth-child(3) {
+    padding-right: 118px;
+}
+
+.rows {
+    display: flex;
+    padding-top: 8px;
+}
+
+.rows div:first-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 72px;
+    height: 96px;
+    background: var(--white);
+    border-radius: 5px 0px 0px 5px;
+
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    color: var(--text);
+    margin-right: 4px;
+}
+
+.userInformation {
+    display: flex;
+    align-items: center;
+    min-width: 894px;
+    height: 96px;
+    padding-left: 20px;
+    background: var(--white);
+}
+
+.userInformation img{
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+}
+
+.texts {
+    display: flex;
+    flex-direction: column;
+    padding-left: 16px;
+    width: 467px;
+}
+
+.texts span {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--title);
+}
+
+.texts div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 7px;
+
+}
+
+.texts div span {
+    font-size: 16px;
+    font-weight: 400;
+    padding-left: 9px;
+    color: var(--text);
+
+}
+
+.texts div img {
+    width: 14px;
+    height: 16px;
+}
+
+.text span {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.text span:first-child {
+    color: var(--blue);
+    padding-right: 5px;
+}
+
+.completedChallenges {
+    width: 190px;
+}
+
+.experience {
+    padding-right: 20px;
+}
